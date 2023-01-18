@@ -1,0 +1,114 @@
+#:kivy 1.11.1
+
+<MainWidget>:
+    orientation: 'vertical'
+    canvas:
+        Color:
+            rgb: 1,0.1,0.1
+        Rectangle:
+            size: self.size
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint: (1,0.1)
+        spacing: 10
+        Label:
+            text: 'SUPERVISÓRIO ESTEIRA v1.0'
+            size_hint_x: 1
+            
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: None
+            width: 400
+            Label:
+                text: 'Configurações'
+            BoxLayout:
+                orientation: 'horizontal'
+                Button:
+                    text: "MODBUS"
+                    on_release: root._modbusPopup.open()
+                Button:
+                    text: "Scan Time"
+                    on_release: root._scanPopup.open()
+                
+        Image:
+            id: img_con
+            size_hint_x: None
+            width: 80
+            source: 'imgs/desconectado.png'
+            pos_hint:{'top':1, 'right':1}
+    
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgb: 1,1,1
+            Rectangle:
+                size: self.size
+        Image:
+            source: 'imgs/layout.png'
+
+        Button:
+            text:'Tesys Direta'
+            pos_hint: {'x':0.05,'y':.4}
+            size_hint: (0.2,0.05)
+        
+        Button:
+            text:'ATV31 inversor'
+            pos_hint: {'x':0.05,'y':.35}
+            size_hint: (0.2,0.05)
+
+        Button:
+            text:'ATS48 soft-start'
+            pos_hint: {'x':0.05,'y':.3}
+            size_hint: (0.2,0.05)
+
+        Button:
+            text:'Ligar'
+            pos_hint: {'x':0.49,'y':.4}
+            size_hint: (0.17,0.05)
+
+        Button:
+            text:'Desligar'
+            pos_hint: {'x':0.49,'y':.35}
+            size_hint: (0.17,0.05)
+
+        Button:
+            text:'Resetar'
+            pos_hint: {'x':0.49,'y':.3}
+            size_hint: (0.17,0.05)
+        
+        Label:
+            id:vel_motor
+            text:'-.- RPM'
+            font_size:15
+            bold: True
+            halling:'center'
+            pos_hint: {'x':0.27,'y':0.31}
+            color: 0,0,0,1
+
+        Label:
+            id:vel_esteira
+            text:'-.- m/min'
+            font_size:15
+            bold: True
+            halling:'center'
+            pos_hint: {'x':0.27,'y':0.26}
+            color: 0,0,0,1
+
+        Label:
+            id:torque
+            text:'-.- N*m'
+            font_size:15
+            bold: True
+            halling:'center'
+            pos_hint: {'x':-0.32,'y':0.2}
+            color: 0,0,0,1
+
+        Button:
+            id:ed_torque
+            text:'Torque'
+            size_hint: (0.09,0.004)
+            pos_hint: {'x':0.05, 'y':0.7}
+ 
+                
