@@ -1,0 +1,239 @@
+#:kivy 1.11.1
+
+<MainWidget>:
+    orientation: 'vertical'
+    canvas:
+        Color:
+            rgb: .1,0.1,0.1
+        Rectangle:
+            size: self.size
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint: (1,0.1)
+        spacing: 10
+        Label:
+            text: 'SUPERVISÓRIO ESTEIRA v1.0'
+            size_hint_x: 1
+            
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_x: None
+            width: 400
+            Label:
+                text: 'Configurações'
+            BoxLayout:
+                orientation: 'horizontal'
+                Button:
+                    text: "MODBUS"
+                    on_release: root._modbusPopup.open()
+                Button:
+                    text: "Scan Time"
+                    on_release: root._scanPopup.open()
+                
+        Image:
+            id: img_con
+            size_hint_x: None
+            width: 80
+            source: 'imgs/desconectado.png'
+            pos_hint:{'top':1, 'right':1}
+    
+
+    FloatLayout:
+        canvas:
+            Color:
+                rgb: 1,1,1
+            Rectangle:
+                size: self.size
+        Image:
+            source: 'imgs/layout.png'
+
+        Button:
+            text:'Tesys Direta'
+            pos_hint: {'x':0.042,'y':.47}
+            size_hint: (0.2,0.05)
+        
+        Button:
+            text:'ATV31 inversor'
+            pos_hint: {'x':0.042,'y':.42}
+            size_hint: (0.2,0.05)
+
+        Button:
+            text:'ATS48 soft-start'
+            pos_hint: {'x':0.042,'y':.38}
+            size_hint: (0.2,0.05)
+
+        Button:
+            text:'Ligar'
+            pos_hint: {'x':0.464,'y':.48}
+            size_hint: (0.17,0.05)
+
+        Button:
+            text:'Desligar'
+            pos_hint: {'x':0.464,'y':.43}
+            size_hint: (0.17,0.05)
+
+        Button:
+            text:'Resetar'
+            pos_hint: {'x':0.464,'y':.38}
+            size_hint: (0.17,0.05)
+        
+        Label:
+            id: es_encoder
+            text:'-.- RPM'
+            font_size:15
+            bold: True
+            halling:'center'
+            pos_hint: {'x':0.24,'y':0.36}
+            color: 0,0,0,1
+
+        Label:
+            id: es_esteira
+            text:'-.- m/min'
+            font_size:15
+            bold: True
+            halling:'center'
+            pos_hint: {'x':0.24,'y':0.31}
+            color: 0,0,0,1
+
+        Label:
+            id:es_torque
+            text:'-.- N*m'
+            font_size:15
+            bold: True
+            halling:'center'
+            pos_hint: {'x':-0.32,'y':0.25}
+            color: 0,0,0,1
+
+        Button:
+            id:ed_torque
+            text:'Torque'
+            size_hint: (0.09,0.004)
+            pos_hint: {'x':0.05, 'y':0.755}
+
+        Label:
+            id: es_temp_r
+            text: '-.- ºC'
+            size_hint: (0.5,0.5)
+            pos_hint:{'x':0.05, 'y':-0.028}
+            font_size:15
+            bold: True
+            halling:'center'
+            color: 0,0,0,1
+
+        Label:
+            id: es_temp_s
+            text: '-.- ºC'
+            size_hint: (0.5,0.5)
+            pos_hint:{'x':0.05, 'y':0.023}
+            font_size:15
+            bold: True
+            halling:'center'
+            color: 0,0,0,1
+
+        Label:
+            id: es_temp_t
+            text: '-.- ºC'
+            size_hint: (0.5,0.5)
+            pos_hint:{'x':0.05, 'y':-0.07}
+            font_size:15
+            bold: True
+            halling:'center'
+            color: 0,0,0,1
+
+        Label:
+            id: es_temp_carc
+            text: '-.- ºC'
+            size_hint: (0.5,0.5)
+            pos_hint:{'x':0.05, 'y':-0.12}
+            font_size:15
+            bold: True
+            halling:'center'
+            color: 0,0,0,1
+
+        Label:
+            id: es_le_carga
+            text: '-.- N*m'
+            size_hint: (0.5,0.5)
+            pos_hint:{'x':0.48, 'y':0.02}
+            font_size:15
+            bold: True
+            halling:'center'
+            color: 0,0,0,1  
+
+        Label:
+            id: es_d
+            text: '-.-'
+            size_hint: (0.5,0.5)
+            pos_hint:{'x':0.48, 'y':-0.02}
+            font_size:15
+            bold: True
+            halling:'center'
+            color: 0,0,0,1    
+                
+        Label:
+            id: es_p
+            text: '-.-'
+            size_hint: (0.5,0.5)
+            pos_hint:{'x':0.48, 'y':-0.07}
+            font_size:15
+            bold: True
+            halling:'center'
+            color: 0,0,0,1    
+                
+        Label:
+            id: es_i
+            text: '-.-'
+            size_hint: (0.5,0.5)
+            pos_hint:{'x':0.48, 'y':-0.12}
+            font_size:15
+            bold: True
+            halling:'center'
+            color: 0,0,0,1  
+
+        Label:
+            id: es_carga
+            text: '-.- n*m'
+            size_hint: (0.5,0.5)
+            pos_hint:{'x':0.6, 'y':.26}
+            font_size:15
+            bold: True
+            halling:'center'
+            color: 0,0,0,1  
+
+        Label:
+            id: es_texto_pid
+            text: '-.- '
+            size_hint: (0.5,0.5)
+            pos_hint:{'x':0.6, 'y':.21}
+            font_size:15
+            bold: True
+            halling:'center'
+            color: 0,0,0,1  
+
+        Button:
+            size_hint: (None, None)
+            size: (0.75*62,0.75*58)
+            background_normal: 'imgs/graph_icon.jpg' 
+            bacground_down: 'imgs/graph_icon.jpg'
+            pos_hint: {'x':0.85, 'y':0.15}
+            on_release:
+                root._graph.open()
+
+        Button:
+            text:'Dados históricos'
+            pos_hint: {'right':1,'down':1}
+            size_hint: (0.2,0.05)
+            on_release:
+                root._hgraph.open()
+
+<LabeledCheckBoxHistGraph>:
+    orientation: 'horizontal'
+    size_hint: (0.05,1)
+    CheckBox:
+        id: checkbox
+        on_active: app.root.getDataDB()
+    Label:
+        id:label
+        font_size: 12
+        bold: True
